@@ -151,4 +151,16 @@
         }
     }
     6、实现Nginx的高可用
+    7、FastDFS：高可用的分布式文件系统、主要是为了在服务器上存储图片的时候能通过FastDFS来找回对应的文件、配置Nginx（提供Http协议的访问）上传到
+    服务器、在通过FastDFS来存储文件。
+      client、Tracker、Strorage
+       client询问Tracker当前访问的文件所在的Strorage的位置、即是Strorage所在的组、Tracker根据Strorage组中每一个的情况分配一个当前合适的Strorage
+       的IP和端口给client、client通过IP和端口访问对应的Strorage找到对应的文件。
+    8、文件上传：
+      使用common-io和upload-file的jar
+      在springmvc.xml文件中加入资源管理器
+      在jsp文件中声明组件的name（与controller中的Multifile的名字一致，也就是参数名）在controller中通过这个参数即可获得上传文件的bytes、通过调用
+      FastDFS提供的java客户端的jar中的方法即可实现文件保存到对应的服务器中（这里主要是利用到Tracker所在服务器的IP、通过Tracker的IP获取对应的
+      TrackerServer对象，进而获得StrorageClient上传图片、主要是因为Strorage的获得需要Tracker的分配，所以这里需要的是Tracker的IP而不是Strorage
+      的IP、Strorage的IP是间接获得的。）4-8
   
