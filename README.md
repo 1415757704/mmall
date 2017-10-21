@@ -13,6 +13,7 @@
   浏览器测试：
     http://192.168.25.128/
 2、启动zookeeper
+   su切换到root用户
    dpkg-reconfigure dash：关闭默认shell命令，选择No.
    cd /home/lzx/zookeeper-3.4.6
    sh bin/zkServer.sh start：启动服务
@@ -162,5 +163,5 @@
       在jsp文件中声明组件的name（与controller中的Multifile的名字一致，也就是参数名）在controller中通过这个参数即可获得上传文件的bytes、通过调用
       FastDFS提供的java客户端的jar中的方法即可实现文件保存到对应的服务器中（这里主要是利用到Tracker所在服务器的IP、通过Tracker的IP获取对应的
       TrackerServer对象，进而获得StrorageClient上传图片、主要是因为Strorage的获得需要Tracker的分配，所以这里需要的是Tracker的IP而不是Strorage
-      的IP、Strorage的IP是间接获得的。）4-8
+      的IP、Strorage的IP是间接获得的。）
   
